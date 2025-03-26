@@ -2,6 +2,13 @@
 /* ----- Basic Setup ----- */
 /* --------------------------------------- */
 
+
+.center-text {
+  text-align: center; /* Center-align the text */
+  margin: 0 auto; /* Optional: Center the block itself */
+  line-height: 1.6; /* Optional: Adjust line spacing for readability */
+}
+
 @font-face {
     font-family: 'Hk Grotesk';
     font-style: normal;
