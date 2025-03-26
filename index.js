@@ -45,13 +45,19 @@ window.addEventListener("scroll", () => {
 function openResume(event) {
   event.preventDefault(); // Prevent default link behavior
 
-  // Set the PDF file path in the iframe
-  const pdfViewer = document.getElementById("pdfViewer");
-  pdfViewer.src = "./resume.pdf"; // Path to your PDF file
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // Show the modal
-  const pdfModal = document.getElementById("pdfModal");
-  pdfModal.style.display = "block";
+  if (isMobile) {
+    // For mobile devices, open the PDF in a new browser tab
+    window.open('./resume.pdf', '_blank');
+  } else {
+    // For desktop, open the PDF in a modal
+    const pdfViewer = document.getElementById("pdfViewer");
+    pdfViewer.src = "./resume.pdf"; // Path to your PDF file
+
+    const pdfModal = document.getElementById("pdfModal");
+    pdfModal.style.display = "block";
+  }
 }
 
 function closeModal() {
