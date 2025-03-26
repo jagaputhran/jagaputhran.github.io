@@ -44,5 +44,22 @@ window.addEventListener("scroll", () => {
 
 function openResume(event) {
   event.preventDefault(); // Prevent default link behavior
-  window.open('./resume.pdf', 'Resume', 'width=800,height=600,scrollbars=yes');
+
+  // Set the PDF file path in the iframe
+  const pdfViewer = document.getElementById("pdfViewer");
+  pdfViewer.src = "./resume.pdf"; // Path to your PDF file
+
+  // Show the modal
+  const pdfModal = document.getElementById("pdfModal");
+  pdfModal.style.display = "block";
+}
+
+function closeModal() {
+  // Hide the modal
+  const pdfModal = document.getElementById("pdfModal");
+  pdfModal.style.display = "none";
+
+  // Clear the iframe src to stop loading the PDF
+  const pdfViewer = document.getElementById("pdfViewer");
+  pdfViewer.src = "";
 }
