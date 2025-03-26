@@ -44,5 +44,5 @@ window.addEventListener("scroll", () => {
 
 function openResume(event) {
   event.preventDefault(); // Prevent default link behavior
-  window.open('https://github.com/jagaputhran/jagaputhran.github.io/blob/main/resume.pdf', 'Resume', 'width=800,height=600,scrollbars=yes');
+  window.open('./resume.pdf', 'Resume', 'width=800,height=600,scrollbars=yes');
 }
