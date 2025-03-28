@@ -654,3 +654,18 @@ iframe {
     box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8); /* White glow */
 }
 
+/* Typing Effect */
+.typing-container {
+    font-weight: bold;
+    border-right: 2px solid white; /* Cursor effect */
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
