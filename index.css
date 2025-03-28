@@ -655,7 +655,7 @@ iframe {
 }
 
 /* Typing Effect */
-.typing-container {
+.typing-effect {
     font-weight: bold;
     border-right: 2px solid white; /* Cursor effect */
     white-space: nowrap;
