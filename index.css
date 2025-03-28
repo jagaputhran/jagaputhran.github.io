@@ -649,11 +649,8 @@ iframe {
   border: none;
 }
 
-.ui.labels a.ui.label {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.ui.labels a.ui.label:hover {
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8); /* White glow */
 }
 
-.ui.labels a.ui.label:hover {
-    transform: scale(1.1);  /* Slightly enlarges the label */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-}
