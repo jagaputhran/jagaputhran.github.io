@@ -69,3 +69,20 @@ function closeModal() {
   const pdfViewer = document.getElementById("pdfViewer");
   pdfViewer.src = "";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const text = "Jagaputhran S"; // Your name
+    const typingElement = document.querySelector(".typing-container");
+
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, 150); // Typing speed
+        }
+    }
+
+    type();
+});
+
