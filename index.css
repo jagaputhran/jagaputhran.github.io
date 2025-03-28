@@ -648,3 +648,12 @@ body:not(.user-is-tabbing) a:focus {
 iframe {
   border: none;
 }
+
+.ui.labels a.ui.label {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ui.labels a.ui.label:hover {
+    transform: scale(1.1);  /* Slightly enlarges the label */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
