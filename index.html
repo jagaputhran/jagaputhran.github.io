@@ -254,6 +254,109 @@
     <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
   </a>
   <script src="./index.js"></script>
+  <!-- Chatbot UI -->
+  <div id="chatbot-container" class="chatbot">
+      <div id="chat-header">💬 Chat with AI</div>
+      <div id="chat-messages"></div>
+      <div id="chat-input-container">
+          <input type="text" id="chat-input" placeholder="Type a message..." />
+          <button onclick="sendMessage()">Send</button>
+      </div>
+  </div>
+  
+  <script src="https://mlc.ai/web-llm/dist/web-llm.min.js"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          let chatBox = document.getElementById("chat-messages");
+          let chatEngine = new WebLLM.ChatEngine({ model: "tinyllama/TinyLlama-1.1B" });
+  
+          async function sendMessage() {
+              let inputField = document.getElementById("chat-input");
+              let userMessage = inputField.value.trim();
+              if (!userMessage) return;
+  
+              chatBox.innerHTML += `<div class="chat-user">You: ${userMessage}</div>`;
+              inputField.value = "";
+  
+              let response = await chatEngine.chat(userMessage);
+              chatBox.innerHTML += `<div class="chat-bot">Bot: ${response}</div>`;
+              
+              // Auto-scroll to the latest message
+              chatBox.scrollTop = chatBox.scrollHeight;
+          }
+  
+          window.sendMessage = sendMessage;
+      });
+  </script>
+  
+  <style>
+      /* Chatbot Styling */
+      .chatbot {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          width: 300px;
+          background: #f9f9f9;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          font-family: Arial, sans-serif;
+      }
+      
+      #chat-header {
+          background: #007bff;
+          color: white;
+          padding: 10px;
+          text-align: center;
+          font-weight: bold;
+          border-radius: 10px 10px 0 0;
+      }
+      
+      #chat-messages {
+          height: 200px;
+          overflow-y: auto;
+          padding: 10px;
+          background: #fff;
+      }
+      
+      .chat-user {
+          background: #dcf8c6;
+          padding: 5px;
+          margin: 5px;
+          border-radius: 5px;
+      }
+      
+      .chat-bot {
+          background: #ebebeb;
+          padding: 5px;
+          margin: 5px;
+          border-radius: 5px;
+      }
+  
+      #chat-input-container {
+          display: flex;
+          padding: 10px;
+          background: #f1f1f1;
+          border-radius: 0 0 10px 10px;
+      }
+      
+      #chat-input {
+          flex: 1;
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+      
+      button {
+          background: #007bff;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          margin-left: 5px;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+  </style>
+
 </body>
 
 </html>
