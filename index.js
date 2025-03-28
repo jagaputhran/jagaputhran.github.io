@@ -70,19 +70,38 @@ function closeModal() {
   pdfViewer.src = "";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const text = "Jagaputhran S"; // Your name
-    const typingElement = document.querySelector(".typing-container");
+document.addEventListener("DOMContentLoaded", function () {
+    const textElement = document.querySelector(".typing-effect");
+    const words = ["Jagaputhran S", "Designer", "Innovator"]; // Add your words here
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let isDeleting = false;
 
-    let i = 0;
     function type() {
-        if (i < text.length) {
-            typingElement.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, 150); // Typing speed
+        const currentWord = words[wordIndex];
+        const displayedText = isDeleting 
+            ? currentWord.substring(0, letterIndex--) 
+            : currentWord.substring(0, letterIndex++);
+
+        textElement.innerHTML = displayedText;
+
+        let typeSpeed = isDeleting ? 50 : 100; // Typing speed
+        
+        if (!isDeleting && letterIndex === currentWord.length) {
+            typeSpeed = 1500; // Pause before deleting
+            isDeleting = true;
+        } else if (isDeleting && letterIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            typeSpeed = 500; // Pause before typing new word
         }
+
+        setTimeout(type, typeSpeed);
     }
 
-    type();
+    if (textElement) {
+        type();
+    }
 });
+
 
