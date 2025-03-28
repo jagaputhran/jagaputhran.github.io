@@ -662,6 +662,7 @@ iframe {
     font-weight: bold;
     font-size: var(--font-size-large);
     animation: blinkCursor 0.8s infinite;
+    line-height: 1.2;
 }
 
 @keyframes blinkCursor {
