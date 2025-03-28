@@ -72,7 +72,7 @@ function closeModal() {
 
 document.addEventListener("DOMContentLoaded", function () {
     const textElement = document.querySelector(".typing-effect");
-    const words = ["Jagaputhran S", "Designer", "Innovator"]; // Add your words here
+    const words = ["Jagaputhran S ", "Designer", "Innovator"]; // Add your words here
     let wordIndex = 0;
     let letterIndex = 0;
     let isDeleting = false;
