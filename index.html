@@ -254,9 +254,15 @@
     <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
   </a>
   <script src="./index.js"></script>
+  <!-- Floating Chatbot Button -->
+  <button id="chatbot-toggle" class="chatbot-button">💬 Chat</button>
+  
   <!-- Chatbot UI -->
-  <div id="chatbot-container" class="chatbot">
-      <div id="chat-header">💬 Chat with AI</div>
+  <div id="chatbot-container" class="chatbot hidden">
+      <div id="chat-header">
+          💬 Chat with AI
+          <button id="chat-close">✖</button>
+      </div>
       <div id="chat-messages"></div>
       <div id="chat-input-container">
           <input type="text" id="chat-input" placeholder="Type a message..." />
@@ -286,22 +292,55 @@
           }
   
           window.sendMessage = sendMessage;
+  
+          // Toggle chatbot visibility
+          const chatToggle = document.getElementById("chatbot-toggle");
+          const chatbotContainer = document.getElementById("chatbot-container");
+          const chatClose = document.getElementById("chat-close");
+  
+          chatToggle.addEventListener("click", () => {
+              chatbotContainer.classList.toggle("hidden");
+          });
+  
+          chatClose.addEventListener("click", () => {
+              chatbotContainer.classList.add("hidden");
+          });
       });
   </script>
   
   <style>
+      /* Floating Button */
+      .chatbot-button {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          font-size: 16px;
+      }
+  
       /* Chatbot Styling */
       .chatbot {
           position: fixed;
-          bottom: 20px;
+          bottom: 70px;
           right: 20px;
           width: 300px;
           background: #f9f9f9;
           border-radius: 10px;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
           font-family: Arial, sans-serif;
+          display: none; /* Initially hidden */
       }
-      
+  
+      .hidden {
+          display: none;
+      }
+  
       #chat-header {
           background: #007bff;
           color: white;
@@ -309,22 +348,32 @@
           text-align: center;
           font-weight: bold;
           border-radius: 10px 10px 0 0;
+          display: flex;
+          justify-content: space-between;
       }
-      
+  
+      #chat-header button {
+          background: none;
+          border: none;
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+      }
+  
       #chat-messages {
           height: 200px;
           overflow-y: auto;
           padding: 10px;
           background: #fff;
       }
-      
+  
       .chat-user {
           background: #dcf8c6;
           padding: 5px;
           margin: 5px;
           border-radius: 5px;
       }
-      
+  
       .chat-bot {
           background: #ebebeb;
           padding: 5px;
@@ -338,14 +387,14 @@
           background: #f1f1f1;
           border-radius: 0 0 10px 10px;
       }
-      
+  
       #chat-input {
           flex: 1;
           padding: 5px;
           border: 1px solid #ccc;
           border-radius: 5px;
       }
-      
+  
       button {
           background: #007bff;
           color: white;
